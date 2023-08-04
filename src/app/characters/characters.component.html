@@ -1,0 +1,39 @@
+<h1 class="h4">Harry Potter Characters</h1>
+
+<script>
+  function calculateAge(dateOfBirth) {
+    let num = new Date(dateOfBirth);
+    if (dateOfBirth) {
+      var timeDiff = Math.abs(Date.now() - num.getTime());
+      return Math.ceil(timeDiff / (1000 * 3600 * 24) / 365);
+    }
+
+  }
+
+</script>
+<table class="table table-striped">
+  <thead class="bg-dark text-light">
+    <tr class="align-middle">
+      <th>Name</th>
+      <th>Species</th>
+      <th>Gender</th>
+      <th>House</th>
+      <th>Age</th>
+      <th>Image</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let member of characters">
+      <td>{{ member.name }}</td>
+      <td>{{ member.species }}</td>
+      <td>{{ member.gender }}</td>
+      <td>{{ member.house }}</td>
+      <td>
+        <script>calculateAge(`{{ member.dateOfBirth }}`);</script>
+      </td>
+      <td>
+        <img src="{{ member.image }}" class="me-2" style="width: 50px" />
+      </td>
+    </tr>
+  </tbody>
+</table>
